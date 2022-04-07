@@ -40,22 +40,27 @@
 
 <style>
     #contattaci {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        bottom: 40px;
-        right: 18px;
-        text-decoration: none;
-        z-index: 2147483650;
-        width: 10rem;
-        height: 6rem;
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 5px 5px 10px 0px #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 3px;
+    right: 18px;
+    text-decoration: none;
+    z-index: 2147483650;
+    width: 10rem;
+    height: 8rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0px #000000;
     }
     #contattaci span {
         display: none;
+    }
+    #contattaci div {
+        display: flex;
+        justify-content: center;
     }
     #whapp{
         width: 55px;
@@ -73,8 +78,11 @@
 <body>
 
 <div id="contattaci">
-  <a href="https://wa.me/393338881082?text=Buongiorno.%20Vorrei%20informazioni%20sui%20vostri%20servizi." id="whapp" title="Contattaci con WhatsApp"><span>&nbsp;</span></a>
-  <a href="mailto:info@comuneinpiazza.it" id="mail" title="scrivi email a info@comuneinpiazza.it"><span>scrivi</span></a>
+    <div>
+        <a href="https://wa.me/393338881082?text=Buongiorno.%20Vorrei%20informazioni%20sui%20vostri%20servizi." id="whapp" title="Contattaci con WhatsApp"><span>&nbsp;</span></a>
+        <a href="mailto:info@comuneinpiazza.it" id="mail" title="scrivi email a info@comuneinpiazza.it"><span>scrivi</span></a>
+    </div>
+  <div><p style="text-align:center">Contattaci tramite WhatsApp o email</p></div>
 </div>
 
   <section data-bs-version="5.1" class="menu cid-s48OLK6784" once="menu" id="menu1-v">
