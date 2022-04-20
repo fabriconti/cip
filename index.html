@@ -29,7 +29,7 @@
   <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.1/simpleslider.min.js" integrity="sha512-42ihIJMe9wofu/ceGVAmlEYPtHXiMHaqlyNircGpwIIPoS6njsNUkhP6TFnwpcmtC1ACydkX0polDFQesnLukg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JWVTF91KQE"></script>
 <script>
@@ -128,28 +128,90 @@
     </nav>
 </section>
 </div>
+
 <div class="container-fluid">
-    <div class="content-wrapper">
+<style>
+#slides{
+    position: relative;
+    height: 48rem;
+    padding: 0px;
+    margin: 0 0 1rem 0;
+    list-style-type: none;
+}
+
+.slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.showing{
+    opacity: 1;
+    z-index: 2;
+}
+
+</style>
+
+<div class="content-wrapper">
         <div class="row align-items-center">
             <div class="col-12 col-lg">
-                <div>
-                    <div style="width: 100%; padding-bottom:40%" data-simple-slider>
-<img src="assets/images/slider/20220417-12-uovo-gradisca-1200-12-gradiscae.jpg">
-<img src="assets/images/slider/20220417-12-uovo-gradisca-1200-3.jpg" alt="" >
-<img src="assets/images/slider/20220417-12-uovo-gradisca-1200-ilpiccolo.jpg" alt="" >
-<img src="assets/images/slider/PHOTO-2022-04-14-gradisca-1200.jpg" alt="" >
-<img src="assets/images/slider/2022-04-17-gradisca-uovo-1200-4-5-6.jpg" alt="" >
-<img src="assets/images/slider/2022-04-15 volantino.jpg" alt="" >
-                </div>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.1/simpleslider.min.js" integrity="sha512-42ihIJMe9wofu/ceGVAmlEYPtHXiMHaqlyNircGpwIIPoS6njsNUkhP6TFnwpcmtC1ACydkX0polDFQesnLukg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                <script>
-                    simpleslider.getSlider();
-                </script>
-
+                <ul id="slides">
+                    <li class="slide showing"><img src="assets/images/slider/20220417-12-uovo-gradisca-1200-12-gradiscae.jpg"></li>
+                    <li class="slide"><img src="assets/images/slider/20220417-12-uovo-gradisca-1200-3.jpg" alt="" ></li>
+                    <li class="slide"><img src="assets/images/slider/20220417-12-uovo-gradisca-1200-ilpiccolo.jpg" alt="" ></li>
+                    <li class="slide"><img src="assets/images/slider/PHOTO-2022-04-14-gradisca-1200.jpg" alt="" ></li>
+                    <li class="slide"><img src="assets/images/slider/2022-04-17-gradisca-uovo-1200-4-5-6.jpg" alt="" ></li>
+                    <li class="slide"><img src="assets/images/slider/2022-04-15 volantino.jpg" alt="" ></li>
+                </ul>
             </div>
         </div>
+        <div style="text-align:center">
+            <a class="controls" id="pause">⏸ Pause</a>
+        </div>
     </div>
+
 </div>
+<script>
+    var slides = document.querySelectorAll('#slides .slide');
+    var currentSlide = 0;
+    var slideInterval = setInterval(nextSlide,2000);
+
+function nextSlide(){
+    slides[currentSlide].className = 'slide';
+    currentSlide = (currentSlide+1)%slides.length;
+    slides[currentSlide].className = 'slide showing';
+}
+
+var playing = true;
+var pauseButton = document.getElementById('pause');
+
+function pauseSlideshow(){
+    pauseButton.innerHTML = '▶ Play';
+    playing = false;
+    clearInterval(slideInterval);
+}
+
+function playSlideshow(){
+    pauseButton.innerHTML = '⏸ Pause';
+    playing = true;
+    slideInterval = setInterval(nextSlide,2000);
+}
+
+pauseButton.onclick = function(){
+    if(playing){ pauseSlideshow(); }
+    else{ playSlideshow(); }
+};
+
+</script>
 
 <div class="container-fluid">
     <div class="content-wrapper">
